@@ -26,8 +26,8 @@ const routes = require('./routes/mainRoutes');
 // Usar las rutas en la aplicación
 app.use(cors());
 app.use('/', routes);
-
+const PORT=process.env.PORT ?? 4000
 // Iniciar el servidor
 app.listen(4000, () => {
-  console.log('Server running on port 4000');
+  console.log(`Server running on port ${PORT}`);
 });
