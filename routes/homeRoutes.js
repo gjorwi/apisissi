@@ -5,7 +5,7 @@ const router = express.Router();
 const homeCont = require('../controllers/home');
 
 // Definir la ruta
-router.post('/', homeCont.getHomeController);
+router.get('/', homeCont.getHomeController);
 
 // Exportar el router
 module.exports = router;
