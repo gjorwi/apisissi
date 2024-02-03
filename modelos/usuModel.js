@@ -33,6 +33,14 @@ var usuariosSchema = new Schema({
     type: String,
     required: [true, 'Telefono del usuario'],
   },
+  admin: {
+    type: Boolean,
+    default:false
+  },
+  onlyRead: {
+    type: Boolean,
+    default:false
+  },
   status: {
     type: Boolean,
     default:true

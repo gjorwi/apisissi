@@ -10,7 +10,8 @@ const express = require('express');
 exports.addLoginController = async (req, res) => {
   const {usuUserName,usuPassword,usuInstId}=req.body
   const usuPasswordNotEncrypt=usuPassword
-  const filter = { usuUserName: usuUserName.toUpperCase(),usuInstId:usuInstId,status:true };
+  const usuInstIdClient=usuInstId
+  const filter = { usuUserName: usuUserName.toUpperCase(),status:true };
   console.log(JSON.stringify(filter))
   try {
     //Verificar si ya existe
@@ -26,16 +27,17 @@ exports.addLoginController = async (req, res) => {
       res.json(respuesta);
       return
     }
-    const {usuPassword,usuDepartId,usuCed}=resultFindUsuario[0]
+    const {usuPassword,usuDepartId,usuCed,usuInstId,admin}=resultFindUsuario[0]
     const confirmPass =await multiFunct.comparePasswords(usuPasswordNotEncrypt,usuPassword);
-    console.log('clave sin encrypt:'+ usuPasswordNotEncrypt)
-    console.log('clave encrypt:'+ usuPassword)
-    console.log('Confirmacion clave:'+ confirmPass)
-    if(!confirmPass){
+    var confirmInstId=true
+    if(!admin){
+      confirmInstId=usuInstIdClient==usuInstId
+    }
+    if(!confirmPass || !confirmInstId){
       var respuesta = {
         error: true,
         codigo: 401,
-        mensaje: 'Usuario o contraseña incorrecto o no pertenecen a dicha institución',
+        mensaje: 'Usuario o contraseña incorrecto o no pertenecen a dicha institución 2',
         data:[]
       };
       res.json(respuesta);
@@ -47,6 +49,7 @@ exports.addLoginController = async (req, res) => {
       usuInstId:usuInstId,
       usuDepartId:usuDepartId,
       usuCed:usuCed,
+      _id:_id,
       token:token
     }
     var respuesta = {

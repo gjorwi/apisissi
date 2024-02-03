@@ -32,7 +32,7 @@ exports.getUsuController = async (req, res) => {
 };
 
 exports.addUsuController = async (req, res) => {
-  const {usuName,usuUserName,usuCed,instCod,departCod,usuPassword,usuTelefono}=req.body
+  const {usuName,usuUserName,usuCed,instCod,departCod,usuPassword,usuTelefono,admin,onlyRead}=req.body
   const filter = { usuCed: usuCed, status:true };
   const filter2 = { usuUserName: usuUserName};
   try {
@@ -73,7 +73,9 @@ exports.addUsuController = async (req, res) => {
       usuInstId:instCod,
       usuDepartId:departCod,
       usuPassword:newUsuPassword,
-      usuTelefono:usuTelefono
+      usuTelefono:usuTelefono,
+      admin:admin,
+      onlyRead:onlyRead
     }
     var newUsuarios= new Usuarios(data);
     let newUsuariosSaved = await newUsuarios.save();
