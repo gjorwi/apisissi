@@ -27,7 +27,7 @@ exports.addLoginController = async (req, res) => {
       res.json(respuesta);
       return
     }
-    const {usuPassword,usuDepartId,usuCed,usuInstId,admin}=resultFindUsuario[0]
+    const {usuPassword,usuDepartId,usuCed,usuInstId,admin,_id}=resultFindUsuario[0]
     const confirmPass =await multiFunct.comparePasswords(usuPasswordNotEncrypt,usuPassword);
     var confirmInstId=true
     if(!admin){
