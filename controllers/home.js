@@ -12,7 +12,7 @@ exports.getHomeController = async (req, res) => {
     var respuesta = {
       error: false,
       codigo: 200,
-      mensaje: 'hola',
+      mensaje: 'Hola bienvenido a APISISSI',
       data:[]
     };
     res.json(respuesta);
