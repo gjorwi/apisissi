@@ -24,8 +24,8 @@ exports.getUsuController = async (req, res) => {
     var respuesta = {
       error: true,
       codigo: 501,
-      mensaje: 'Error inesperado',
-      data:error
+      mensaje: 'Error inesperado '+error,
+      data:[]
     };
     res.json(respuesta);
   }

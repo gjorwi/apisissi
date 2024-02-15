@@ -1,19 +1,20 @@
-var mongoose = require('../modelos/InstModel'),
-Instituciones = mongoose.model('Instituciones');
+var mongoose = require('../modelos/SolModel'),
+Solicitudes = mongoose.model('Solicitudes');
 var multiFunct = require('../extFunction/utilidades');//multiFunc llamaddo
 
 // controllers/instituciones.js
 const express = require('express');
 
 // Definir el controlador
-exports.getInstController = async (req, res) => {
+exports.getSolController = async (req, res) => {
+
   const filter = { status: true };
   try {
-    const getAll = await Instituciones.find(filter).exec();
+    const getAll = await Solicitudes.find(filter).exec();
     var respuesta = {
       error: false,
       codigo: 200,
-      mensaje: 'Consulta de instituciones extraidas',
+      mensaje: 'Consulta de Solicitudes extraidas',
       data:getAll
     };
     console.log(respuesta)
