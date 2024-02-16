@@ -6,7 +6,8 @@ const {isTokenAndCheck}=require('../../middlewares/verifyRequest')
 const solCont = require('../../controllers/solicitudes');
 
 // Definir la ruta
-router.get('/get', isTokenAndCheck, solCont.getSolController);
+router.put('/put', isTokenAndCheck, solCont.getSolController);
+router.post('/add', isTokenAndCheck, solCont.addSolController);
 
 // Exportar el router
 module.exports = router;

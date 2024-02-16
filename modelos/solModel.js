@@ -17,6 +17,11 @@ var solicitudesSchema = new Schema({
     ref: 'Departamentos',
     required: [true, 'Id del departamento']
   },
+  solDepartIdDest: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Departamentos',
+    required: [true, 'Id del departamento destino']
+  },
   solDescripcion: {
     type: String,
     required: [true, 'Descripcion de la solicitud'],
@@ -33,7 +38,7 @@ var solicitudesSchema = new Schema({
     type: String,
     default:'pendiente'
   },
-  asignUsuId: {
+  solAsignUsuId: {
     type: mongoose.Schema.ObjectId,
     ref: 'Usuarios',
     default:''

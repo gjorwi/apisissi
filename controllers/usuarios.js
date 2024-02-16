@@ -10,7 +10,7 @@ const express = require('express');
 exports.getUsuController = async (req, res) => {
   const filter = { status: true };
   try {
-    const getAll = await Usuarios.find(filter).exec();
+    const getAll = await Usuarios.find(filter).populate(['usuDepartId','usuInstId']).exec();
     var respuesta = {
       error: false,
       codigo: 200,

@@ -56,6 +56,7 @@ exports.addLoginController = async (req, res) => {
     }
     const token = await multiFunct.generarJWT(resultFindUsuario[0]);
     const dataResult={
+      _id:_id,
       usuName:usuName,
       usuUserName:usuUserName,
       usuInstId:usuInstId._id,
